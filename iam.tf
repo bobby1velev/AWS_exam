@@ -1,3 +1,7 @@
+############################################
+# IAM role creation
+############################################
+
 resource "aws_iam_role" "ssm_system_manager" {
   name = "ssm_management"
   assume_role_policy = jsonencode({
@@ -13,15 +17,22 @@ resource "aws_iam_role" "ssm_system_manager" {
     ]
   })
   tags = {
-    name = "role"
+    name = "role for simple system management"
   }
 }
 
+############################################
+# Policy attachment
+############################################
 
 resource "aws_iam_role_policy_attachment" "ssm_mgmt_attachment" {
   role       = aws_iam_role.ssm_system_manager.id
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchFullAccess"
 }
+
+############################################
+# Profile for simple system management
+############################################
 
 resource "aws_iam_instance_profile" "iam_instance_profile" {
   name = "instance-profile"

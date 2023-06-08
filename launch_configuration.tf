@@ -33,7 +33,7 @@ resource "aws_autoscaling_group" "my_autoscaling_group" {
   desired_capacity   = 2
   max_size           = 4
   min_size           = 2
-  vpc_zone_identifier = [aws_subnet.subnet_3.id, aws_subnet.subnet_4.id]
+  vpc_zone_identifier = [aws_subnet.subnet_3_private.id, aws_subnet.subnet_4_private.id]
   target_group_arns = [ aws_lb_target_group.alb-target.arn ]
   launch_template {
     id      = aws_launch_template.machine_image_type.id
@@ -54,12 +54,12 @@ resource "aws_autoscaling_policy" "the_policy" {
 # Cloudwatch alarm settings
 
 resource "aws_cloudwatch_metric_alarm" "my_alarm" {
-  alarm_name                = "terraform-test-alarm"
+  alarm_name                = "CPU load check 80 or more"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = 1
   metric_name               = "CPUUtilization"
   namespace                 = "AWS/EC2"
-  period                    = 60
+  period                    = 10
   statistic                 = "Average"
   threshold                 = 80
   alarm_description         = "Cpu utilization threshold overload - adding another instance"

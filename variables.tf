@@ -1,9 +1,18 @@
+############################################
+# Defines the two used types of subnets - public and private
+############################################
+
 variable "subnet_type" {
   default = {
     public  = "public"
     private = "private"
   }
 }
+
+############################################
+# Defines the utilized cidr ranges for the 4 required subnets (the one with 2 was skipped as per task)
+############################################
+
 variable "cidr_ranges" {
   default = {
     public1  = "172.16.1.0/24"
@@ -13,13 +22,25 @@ variable "cidr_ranges" {
   }
 }
 
+############################################
+# Defines instance type - t2 micro is the only one we use as it is free tier eligible
+############################################
+
 variable "instance_type" {
   default = "t2.micro"
   }
 
+############################################
+# Defines the used image
+############################################
+
 variable "used_image" {
   default = "ami-0e23c576dacf2e3df"
   }
+
+############################################
+# Defines the both required per task availability zones: a and b
+############################################
 
 variable "availability_zone_a" {
     type = string
@@ -31,8 +52,12 @@ variable "availability_zone_b" {
     default = "eu-west-1b"
 }
 
+############################################
+# Defines the reqion in which all instances should be created: Ireland
+############################################
+
 variable "aws_region" {
   type        = string
-  description = "My default region for instances creation"
+  description = "The only region we should use"
   default     = "eu-west-1"
 }
