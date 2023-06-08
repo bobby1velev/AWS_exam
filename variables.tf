@@ -6,10 +6,10 @@ variable "subnet_type" {
 }
 variable "cidr_ranges" {
   default = {
-    public1  = "10.0.1.0/24"
-    public2  = "10.0.2.0/24"
-    private1 = "10.0.3.0/24"
-    private2 = "10.0.4.0/24"
+    public1  = "172.16.1.0/24"
+    public2  = "172.16.3.0/24"
+    private1 = "172.16.4.0/24"
+    private2 = "172.16.5.0/24"
   }
 }
 
@@ -33,6 +33,6 @@ variable "availability_zone_b" {
 
 variable "aws_region" {
   type        = string
-  description = "Region for AWS Resources"
+  description = "My default region for instances creation"
   default     = "eu-west-1"
 }

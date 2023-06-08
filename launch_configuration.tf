@@ -52,8 +52,8 @@ resource "aws_cloudwatch_metric_alarm" "my_alarm" {
   namespace                 = "AWS/EC2"
   period                    = 60
   statistic                 = "Average"
-  threshold                 = 30
-  alarm_description         = "This metric monitors ec2 cpu utilization"
+  threshold                 = 80
+  alarm_description         = "Cpu utilization threshold overload"
   alarm_actions = [aws_autoscaling_policy.the_policy.arn]
   dimensions = {
     "AutoScalingGroupName" = aws_autoscaling_group.my_autoscaling_group.name
