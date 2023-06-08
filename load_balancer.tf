@@ -9,7 +9,7 @@ resource "aws_lb" "load_balancer" {
 
   enable_deletion_protection = false
   tags = {
-    name = "load-balancer"
+    name = "exam-load-balancer"
   }
 }
 

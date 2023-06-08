@@ -19,6 +19,9 @@ resource "aws_launch_template" "machine_image_type" {
     #!/bin/bash
     amazon-linux-extras install -y nginx1
     systemctl enable nginx --now
+    sudo amazon-linux-extras install epel -y
+    sudo yum install stress -y
+    stress --cpu 80
     EOF
   )
 }
@@ -45,9 +48,9 @@ resource "aws_autoscaling_group" "my_autoscaling_group" {
 
 resource "aws_autoscaling_policy" "the_policy" {
   name                   = "autoscaling_policy"
-  scaling_adjustment     = 1
+  scaling_adjustment     = 2
   adjustment_type        = "ChangeInCapacity"
-  cooldown               = 300
+  cooldown               = 60
   autoscaling_group_name = aws_autoscaling_group.my_autoscaling_group.name
 }
 
@@ -59,9 +62,9 @@ resource "aws_cloudwatch_metric_alarm" "my_alarm" {
   evaluation_periods        = 1
   metric_name               = "CPUUtilization"
   namespace                 = "AWS/EC2"
-  period                    = 10
+  period                    = 60
   statistic                 = "Average"
-  threshold                 = 80
+  threshold                 = 50
   alarm_description         = "Cpu utilization threshold overload - adding another instance"
   alarm_actions = [aws_autoscaling_policy.the_policy.arn]
   dimensions = {

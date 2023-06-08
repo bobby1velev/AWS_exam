@@ -30,6 +30,11 @@ resource "aws_iam_role_policy_attachment" "ssm_mgmt_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchFullAccess"
 }
 
+resource "aws_iam_role_policy_attachment" "ssm_core_attachment" {
+  role       = aws_iam_role.ssm_system_manager.id
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
 ############################################
 # Profile for simple system management
 ############################################

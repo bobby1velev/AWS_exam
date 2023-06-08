@@ -11,7 +11,7 @@ resource "aws_subnet" "subnet_1_public" {
   cidr_block        = lookup(var.cidr_ranges, "public1")
   availability_zone = var.availability_zone_a
   tags = {
-    name = "${lookup(var.subnet_type, "public")}-subnet"
+    name = "public_subnet_1"
   }
 }
 
@@ -20,7 +20,7 @@ resource "aws_subnet" "subnet_2_public" {
   cidr_block        = lookup(var.cidr_ranges, "public2")
   availability_zone = var.availability_zone_b
   tags = {
-    name = "${lookup(var.subnet_type, "public")}--subnet"
+    name = "public_subnet_2"
   }
 }
 
@@ -29,7 +29,7 @@ resource "aws_subnet" "subnet_3_private" {
   cidr_block        = lookup(var.cidr_ranges, "private1")
   availability_zone = var.availability_zone_a
   tags = {
-    name = lookup(var.subnet_type, "private")
+    name = "private_subnet_3"
   }
 }
 
@@ -38,7 +38,7 @@ resource "aws_subnet" "subnet_4_private" {
   cidr_block        = lookup(var.cidr_ranges, "private2")
   availability_zone = var.availability_zone_b
   tags = {
-    name = lookup(var.subnet_type, "private")
+    name = "private_subnet_4"
   }
 }
 
