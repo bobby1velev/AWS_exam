@@ -17,7 +17,7 @@ resource "aws_iam_role" "ssm_system_manager" {
     ]
   })
   tags = {
-    name = "role for simple system management"
+    Name = "role for simple system management"
   }
 }
 
@@ -43,6 +43,6 @@ resource "aws_iam_instance_profile" "iam_instance_profile" {
   name = "instance-profile"
   role = aws_iam_role.ssm_system_manager.name
   tags = {
-    name = "my_profile"
+    Name = "my_profile"
   }
 }

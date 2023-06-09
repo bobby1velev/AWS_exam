@@ -29,7 +29,7 @@ resource "aws_lb_listener" "front_end" {
   protocol          = "HTTP"
 
   tags = {
-    name = "load balancer listener"
+    Name = "load-balancer-listener"
   }
   default_action {
     type             = "forward"

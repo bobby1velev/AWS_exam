@@ -33,6 +33,7 @@ resource "aws_launch_template" "machine_image_type" {
 # Auto scaling group creation
 
 resource "aws_autoscaling_group" "my_autoscaling_group" {
+  name               = "my_autoscaling_group"
   desired_capacity   = 2
   max_size           = 4
   min_size           = 2

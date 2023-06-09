@@ -11,7 +11,7 @@ resource "aws_subnet" "subnet_1_public" {
   cidr_block        = lookup(var.cidr_ranges, "public1")
   availability_zone = var.availability_zone_a
   tags = {
-    name = "public_subnet_1"
+    Name = "public_subnet_1"
   }
 }
 
@@ -20,7 +20,7 @@ resource "aws_subnet" "subnet_2_public" {
   cidr_block        = lookup(var.cidr_ranges, "public2")
   availability_zone = var.availability_zone_b
   tags = {
-    name = "public_subnet_2"
+    Name = "public_subnet_2"
   }
 }
 
@@ -29,7 +29,7 @@ resource "aws_subnet" "subnet_3_private" {
   cidr_block        = lookup(var.cidr_ranges, "private1")
   availability_zone = var.availability_zone_a
   tags = {
-    name = "private_subnet_3"
+    Name = "private_subnet_3"
   }
 }
 
@@ -38,7 +38,7 @@ resource "aws_subnet" "subnet_4_private" {
   cidr_block        = lookup(var.cidr_ranges, "private2")
   availability_zone = var.availability_zone_b
   tags = {
-    name = "private_subnet_4"
+    Name = "private_subnet_4"
   }
 }
 
@@ -65,7 +65,7 @@ resource "aws_nat_gateway" "terraform_nat" {
   subnet_id     = aws_subnet.subnet_1_public.id
 
   tags = {
-    Name = "terraform-nat1"
+    Name = "My_nat_1"
   }
 }
 
@@ -74,7 +74,7 @@ resource "aws_nat_gateway" "terraform_nat2" {
   subnet_id     = aws_subnet.subnet_2_public.id
 
   tags = {
-    Name = "terraform-nat2"
+    Name = "My_nat_2"
   }
 }
 
